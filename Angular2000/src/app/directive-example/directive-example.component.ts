@@ -8,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
     <p *ngIf="isDataAvailable">Data Avilable</p>
   </div>
 
-  <div>
+  <div >
   <p> ngIf with else, using ng-template </p>
-  <p *ngIf="isSunday(); else nonSunday"  [ngStyle] = "{backgroundColor:getColor()}" >Today is Sunday</p>
-  <ng-template #nonSunday>
-  <p  [ngStyle] = "{backgroundColor:getColor()}" >Today is a weekday and is non sunday</p>   
+  <div  [ngStyle] = "{backgroundColor:getColor()}"> 
+    <p *ngIf="isSunday(); else nonSunday" >Today is Sunday</p>
+    <ng-template #nonSunday>
+    <p  >Today is a weekday and is non sunday</p>   
   </ng-template>
+  </div> 
   </div>
   `,
   styleUrls: ['./directive-example.component.css']
@@ -29,8 +31,8 @@ export class DirectiveExampleComponent implements OnInit {
    isSunday():boolean {
      var today = new Date();
      console.log(today.getDay());
-    return 9%2 ===0 ?true:false;
-     //return today.getDay()===6 ?  true:false;
+    //return 10%2 ===0 ?true:false;
+    return today.getDay()===6 ?  true:false;
    } 
 
    getColor(){
