@@ -10,15 +10,22 @@ import { Component, OnInit } from '@angular/core';
 
   <div >
   <p> ngIf with else, using ng-template </p>
-  <div  [ngStyle] = "{backgroundColor:getColor()}"> 
-    <p *ngIf="isSunday(); else nonSunday" >Today is Sunday</p>
-    <ng-template #nonSunday>
-    <p  >Today is a weekday and is non sunday</p>   
-  </ng-template>
-  </div> 
+    <div  [ngStyle] = "{backgroundColor:getColor()}"
+          [ngClass] = "{whiteText: !isSunday()}"
+    > 
+      <p *ngIf="isSunday(); else nonSunday" >Today is Sunday</p>
+      <ng-template #nonSunday>
+      <p  >Today is a weekday and is non sunday</p>   
+    </ng-template>
+    </div> 
   </div>
   `,
-  styleUrls: ['./directive-example.component.css']
+  styles:[`
+  .whiteText{
+    color:white;
+  }
+
+  `]
 })
 export class DirectiveExampleComponent implements OnInit {
 
