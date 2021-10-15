@@ -26,6 +26,7 @@ export class DirectiveExampleComponent implements OnInit {
    }  
 
   ngOnInit(): void {
+    
   }
 
 }
