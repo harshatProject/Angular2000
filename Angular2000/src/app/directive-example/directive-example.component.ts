@@ -10,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 
   <div>
   <p> ngIf with else, using ng-template </p>
-  <p *ngIf="isSunday(); else nonSunday">Today is Sunday</p>
+  <p *ngIf="isSunday(); else nonSunday"  [ngStyle] = "{backgroundColor:getColor()}" >Today is Sunday</p>
   <ng-template #nonSunday>
-    <p>Today is a weekday and is non sunday</p>
+  <p  [ngStyle] = "{backgroundColor:getColor()}" >Today is a weekday and is non sunday</p>   
   </ng-template>
   </div>
   `,
@@ -28,8 +28,14 @@ export class DirectiveExampleComponent implements OnInit {
 
    isSunday():boolean {
      var today = new Date();
-     return today.getDay()===6 ?  true:false;
+     console.log(today.getDay());
+    return 9%2 ===0 ?true:false;
+     //return today.getDay()===6 ?  true:false;
    } 
+
+   getColor(){
+    return this.isSunday()===true ? 'red':'green';
+   }
 
   ngOnInit(): void {
   }
